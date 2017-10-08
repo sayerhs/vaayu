@@ -34,6 +34,28 @@ import pytz
 
 _lgr = logging.getLogger(__name__)
 
+# Adapted from matplotlib code
+def user_home_dir():
+    """Absolute path to user's home directory"""
+    try:
+        path = os.path.expanduser("~")
+    except ImportError:
+        pass
+    else:
+        if os.path.isdir(path):
+            return path
+
+    for ev in ["HOME", "USERPROFILE"]:
+        path = os.environ.get(ev)
+        if path is not None and os.path.isdir(path):
+            return path
+    return None
+
+def username():
+    """User's login name on the system"""
+    import getpass
+    return getpass.getuser()
+
 def timestamp(local=False):
     """Timestamp in ISO format
 
