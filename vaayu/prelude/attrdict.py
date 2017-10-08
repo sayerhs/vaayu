@@ -132,7 +132,7 @@ def gen_yaml_encoder(cls):
 
     return AttrDictYAMLDumper
 
-class AttrDictMeta(ABCMeta):
+class _AttrDictMeta(ABCMeta):
     """Custom YAML/JSON loader/dumper registration.
 
     Enable custom registration of YAML/JSON readers and writers before the
@@ -142,12 +142,12 @@ class AttrDictMeta(ABCMeta):
     def __new__(mcls, name, bases, cdict):
         yload = cdict.pop("yaml_loader", None)
         ydump = cdict.pop("yaml_dumper", None)
-        cls = super(AttrDictMeta, mcls).__new__(mcls, name, bases, cdict)
+        cls = super(_AttrDictMeta, mcls).__new__(mcls, name, bases, cdict)
         cls.yaml_loader = yload or gen_yaml_decoder(cls)
         cls.yaml_dumper = ydump or gen_yaml_encoder(cls)
         return cls
 
-@six.add_metaclass(AttrDictMeta)
+@six.add_metaclass(_AttrDictMeta)
 class AttrDict(OrderedDict, MutableMapping):
     """Attribute Dictionary
 
@@ -311,15 +311,15 @@ class AttrDict(OrderedDict, MutableMapping):
 
         By default, the method uses the ``.`` character to split keys similar
         to attribute access. However, this can be overridden by providing and
-        extra ``sep` ` argument.
+        extra ``sep`` argument.
 
         Args:
             path (str): The keys in individual dictionarys separated by sep
             sep (str): Separator for splitting keys (default: ".")
 
-        Returns: Value corresponding to the key, or None if any of the keys
-            don't exist.
-
+        Returns:
+            Value corresponding to the key, or None if any of the keys
+              don't exist.
         """
         key_clean = path.strip().strip(sep)
         key_list = key_clean.split(sep)
@@ -346,7 +346,7 @@ class AttrDict(OrderedDict, MutableMapping):
 
         Raises:
             AttributeError: If the object assigned to is a non-mapping type
-            and not the final key.
+              and not the final key.
         """
         key_clean = path.strip().strip(sep)
         key_list = key_clean.split(sep)
