@@ -1,0 +1,19 @@
+# -*- mode: yaml -*-
+
+name: vaayu-dev
+
+dependencies:
+  - python=2.7
+  - pip
+  - six
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - ipython
+  - pyyaml
+  - ruamel_yaml
+  - ply
+  - vtk
+  - sphinx
+  - pytest

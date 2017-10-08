@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+
+name: vaayu-py3k
+
+dependencies:
+  - python=3
+  - pip
+  - six
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - ipython
+  - pyyaml
+  - ruamel_yaml
+  - ply
+  - sphinx
+  - pytest
