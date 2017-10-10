@@ -19,8 +19,9 @@
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath('../..'))
 is_rtd = os.environ.get("READTHEDOCS", None) == 'True'
+if is_rtd:
+    sys.path.insert(0, os.path.abspath('../..'))
 
 # -- General configuration ------------------------------------------------
 

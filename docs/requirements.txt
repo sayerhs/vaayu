@@ -4,3 +4,5 @@ sphinx
 Pygments
 sphinx-rtd-theme
 readthedocs-sphinx-ext
+pyyaml
+netcdf4
