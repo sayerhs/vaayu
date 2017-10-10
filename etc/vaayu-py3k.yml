@@ -14,5 +14,7 @@ dependencies:
   - pyyaml
   - ruamel_yaml
   - ply
+  - netcdf4
+  - click
   - sphinx
   - pytest

@@ -15,5 +15,7 @@ dependencies:
   - ruamel_yaml
   - ply
   - vtk
+  - netcdf4
+  - click
   - sphinx
   - pytest
